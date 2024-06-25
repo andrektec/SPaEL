@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(13, 7, 28);
+  padding: auto;
+}
+
+body div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.cards {
+  transform-style: preserve-3d;
+  transform: perspective(500px);
+  margin: auto;
+  height: 300px;
+  width: 100vw;
+  text-align: center;
+}
+
+.cards * {
+  transition: all 0.5s;
+  display: inline;
+  height: 100%;
+}
+
+.cards *:hover {
+  transform: translateZ(50px);
+}
+
+.cards *.clicked:hover {
+  transform: translateZ(50px) rotateY(180deg) !important;
+}
+
+.cards *.clicked {
+  transform: rotateY(180deg);
+}
+
+.cards *:has(~ *:hover),
+.cards *:hover + *,
+.cards *:hover + * + *,
+.cards *:hover + * + * + *,
+.cards *:hover + * + * + * + * {
+  filter: brightness(0.2);
+}
